@@ -1,0 +1,298 @@
+@font-face{
+    font-family: "play";
+    src: url("fonts/Play-Bold.ttf") format("opentype");
+    font-weight: 700;
+}
+
+@font-face{
+    font-family: "play";
+    src: url("fonts/Play-Regular.ttf") format("opentype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Death Star;
+    src: url('fonts/DeathStar-VmWB.ttf') format("opentype");
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 20px;
+}
+h1{
+    font-size: 3rem;
+    line-height: 3rem;
+}
+h2{
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+}
+h3, p{
+    font-size: 1rem;
+    line-height: 1rem;
+}
+body{
+    background: url('img/starsBg.png') center/cover repeat-y;
+}
+.header {
+    width: 100%;
+    max-width: 1000px;
+    height: 70vh;
+    margin: 0 auto;
+    padding: 25px;
+    text-align: center;
+    perspective: 7rem;
+    perspective-origin: 50%;
+    overflow: hidden;
+}
+.header__title {
+    font-family: Death Star;
+    color:white;
+    margin-bottom: 22px;
+}
+.header__moving-part {
+    color:#F1C837;
+    font-family: 'Play', sans-serif;
+    font-size: 2rem;
+    line-height: 4rem;
+    animation: move-text 25s linear 0s infinite;
+}
+.header__text {
+    transform: rotateX(45deg);
+    overflow: hidden;
+}
+
+.toggle {
+    margin: 88px auto 0 auto;
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    perspective: 33rem;
+}
+.toggle__header {
+    color: white;
+    font-family: 'Play', sans-serif;
+    margin-bottom: 39px;
+}
+.toggle__button {
+    width: 293px;
+    height: 62px;
+    background: #51C3E7;
+    box-shadow: 0px 0px 30px #51C3E7;
+    border-radius: 20px;
+    border:none;
+    outline: none;
+    position: relative;
+    margin-bottom: 55px;
+}
+
+.toggle__button::before{
+    content: "Jedi";
+    font-family: Death Star;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5rem;
+}
+.toggler:checked ~.toggle__button {
+    background: #000000;
+    box-shadow: 0px 0px 30px #FF3333;
+}
+.toggler:checked ~ .toggle__button::before{
+    content: "Sith";
+}
+
+.toggler {
+    position: absolute;
+    top:70px;
+    z-index: 4;
+    width: 293px;
+    height: 62px;
+    opacity: 0;
+}
+
+.toggle__content{
+    width: 100%;
+    height: 100vh;
+    border-radius: 30px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 1s;
+}
+.toggle__jedi {
+    background: url("img/obiwan.png") center/cover no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 30px;
+    backface-visibility: hidden;
+    font-family: 'Play', sans-serif;
+    overflow: hidden;    
+}
+.toggle__sith {
+    background: url("img/darthwaider.png") center/cover no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateY(180deg);    
+    backface-visibility: hidden;
+    border-radius: 30px;
+}
+.toggler:checked ~ .toggle__content{
+    transform: rotateY(180deg);
+}
+
+.jediLogo {
+    position: absolute;
+    top:23px;
+    left: 23px;
+}
+    
+.jedi__planet-container {
+    position: absolute;
+    top: 23px;
+    right: 23px;
+    display: flex;
+    flex-direction: column;
+    height: 468px;
+    width: 400px;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    transform: rotate(90deg);
+    transition: 0.3s;
+    transform-origin: top right;
+}
+.jedi__planet-container img{
+    width: 260px;
+    height: 260px;
+    margin: 35px auto;
+}
+.jedi__title, .jedi__sub-title {
+    color: #51C3E7;
+}
+.jedi__text {
+    color:#535353;
+}
+.jedi__description-container {
+    position: absolute;
+    width: 472px;
+    min-height: 620px;
+    bottom: 23px;
+    left: 23px;
+    background: #FFFFFF;
+    border-radius: 30px;
+    padding: 30px;
+    text-align: left;
+    transform: scale(0);
+    transition: 0.3s;
+    transform-origin: bottom left;
+}
+hr{
+    margin: 15px 0;
+    width: 287.5px;
+    border: 3px solid #51C3E7;
+    border-radius: 30px;
+}
+.jedi__description-container h2{
+    margin-bottom: 54px;
+}
+.jediLogo:hover ~ .jedi__description-container{
+    transform: scale(1);
+}
+.jediLogo:hover ~ .jedi__planet-container{
+    transform: rotate(0);
+}
+
+/* КОД ДЗ */
+.sithLogo {
+    position: absolute;
+    top:23px;
+    left: 23px;
+}
+.sith__planet-container {
+    position: absolute;
+    top: 23px;
+    right: 23px;
+    display: flex;
+    flex-direction: column;
+    height: 468px;
+    width: 400px;
+    background: rgb(0, 0, 0);
+    border-radius: 20px;
+    padding: 30px;
+    transform: scale(0);
+    transition: 0.3s;
+    transform-origin: bottom right;
+}
+.sith__planet-container img{
+    width: 260px;
+    height: 260px;
+    margin: 35px auto;
+}
+.sith__title, .sith__sub-title {
+    color: #FF7676;
+}
+.sith__title {
+    color:#FF7676
+}
+.sith__text{
+    color:#535353;
+}
+
+.sith__description-container{
+    position: absolute;
+    width: 472px;
+    min-height: 620px;
+    bottom: 23px;
+    left: 23px;
+    background: #000000;
+    border-radius: 30px;
+    padding: 30px;
+    text-align: left;
+    transform: rotate(-90deg) scale(0); /*Нужно обязательно добавить обнуление масштаба иначе карточка будет видна*/
+    transition: 0.3s;
+    transform-origin: bottom right;
+}
+ 
+.sith__description-container h2{
+    margin-bottom: 54px;
+}
+.sith__description-container hr{
+    margin: 15px 0;
+    width: 287.5px;
+    border: 3px solid #FF7676;
+    border-radius: 30px;
+}
+.sithLogo:hover ~ .sith__description-container{
+    transform: rotate(0);
+  
+}
+.sithLogo:hover ~ .sith__planet-container{
+    transform: scale(1);
+  
+}
+
+
+
+@keyframes move-text {
+    0%{
+        transform: translateY(50);
+    }
+    100%{
+        transform: translateY(-120%);
+    }
+}
